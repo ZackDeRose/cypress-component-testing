@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "sourceMap": false,
-    "outDir": "../../dist/out-tsc/apps/ui-common-test-bed-e2e/src"
+    "outDir": "../../dist/out-tsc"
   },
   "include": ["src/**/*.ts"]
 }

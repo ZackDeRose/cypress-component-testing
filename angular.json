@@ -27,7 +27,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/ui-common/jest.config.js",
             "tsConfig": "libs/ui-common/tsconfig.spec.json",
@@ -123,7 +123,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/ui-common-test-bed/jest.config.js",
             "tsConfig": "apps/ui-common-test-bed/tsconfig.spec.json",
@@ -138,7 +138,7 @@
       "prefix": "",
       "architect": {
         "e2e": {
-          "builder": "@nrwl/builders:cypress",
+          "builder": "@nrwl/cypress:cypress",
           "options": {
             "cypressConfig": "apps/ui-common-test-bed-e2e/cypress.json",
             "tsConfig": "apps/ui-common-test-bed-e2e/tsconfig.e2e.json",
@@ -165,7 +165,7 @@
       "typescriptMismatch": false,
       "versionMismatch": false
     },
-    "defaultCollection": "@nrwl/schematics"
+    "defaultCollection": "@nrwl/angular"
   },
   "schematics": {
     "@nrwl/schematics:application": {

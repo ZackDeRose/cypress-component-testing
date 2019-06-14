@@ -61,6 +61,7 @@ export default function(schema: any): Rule {
   return chain([
     createComponent(schema),
     addTestComponentToTestApp(schema),
-    addTestComponentToRouting(schema)
+    addTestComponentToRouting(schema),
+    mountComponentInTestBed(schema)
   ]);
 }

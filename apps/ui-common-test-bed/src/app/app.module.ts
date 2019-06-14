@@ -4,14 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { UiCommonModule } from '@nrwl/ui-common';
-import { ZackTestComponent } from './zack-test/zack-test.component';
 
 @NgModule({
-  declarations: [AppComponent, ZackTestComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     UiCommonModule,
-    RouterModule.forRoot([{ path: 'zack', component: ZackTestComponent}], { initialNavigation: 'enabled' })
+    RouterModule.forRoot([], { initialNavigation: 'enabled' })
   ],
   providers: [],
   bootstrap: [AppComponent]

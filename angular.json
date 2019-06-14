@@ -2,7 +2,164 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "",
-  "projects": {},
+  "projects": {
+    "ui-common": {
+      "root": "libs/ui-common",
+      "sourceRoot": "libs/ui-common/src",
+      "projectType": "library",
+      "prefix": "nrwl",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/ui-common/tsconfig.lib.json",
+            "project": "libs/ui-common/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui-common/tsconfig.lib.json",
+              "libs/ui-common/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/ui-common/jest.config.js",
+            "tsConfig": "libs/ui-common/tsconfig.spec.json",
+            "setupFile": "libs/ui-common/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ui-common-test-bed": {
+      "root": "apps/ui-common-test-bed/",
+      "sourceRoot": "apps/ui-common-test-bed/src",
+      "projectType": "application",
+      "prefix": "nrwl",
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/ui-common-test-bed",
+            "index": "apps/ui-common-test-bed/src/index.html",
+            "main": "apps/ui-common-test-bed/src/main.ts",
+            "polyfills": "apps/ui-common-test-bed/src/polyfills.ts",
+            "tsConfig": "apps/ui-common-test-bed/tsconfig.app.json",
+            "assets": [
+              "apps/ui-common-test-bed/src/favicon.ico",
+              "apps/ui-common-test-bed/src/assets"
+            ],
+            "styles": ["apps/ui-common-test-bed/src/styles.scss"],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/ui-common-test-bed/src/environments/environment.ts",
+                  "with": "apps/ui-common-test-bed/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ui-common-test-bed:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ui-common-test-bed:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ui-common-test-bed:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/ui-common-test-bed/tsconfig.app.json",
+              "apps/ui-common-test-bed/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/ui-common-test-bed/jest.config.js",
+            "tsConfig": "apps/ui-common-test-bed/tsconfig.spec.json",
+            "setupFile": "apps/ui-common-test-bed/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "ui-common-test-bed-e2e": {
+      "root": "apps/ui-common-test-bed-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/ui-common-test-bed-e2e/cypress.json",
+            "tsConfig": "apps/ui-common-test-bed-e2e/tsconfig.e2e.json",
+            "devServerTarget": "ui-common-test-bed:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ui-common-test-bed:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/ui-common-test-bed-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "warnings": {
       "typescriptMismatch": false,
@@ -17,5 +174,6 @@
     "@nrwl/schematics:library": {
       "style": "scss"
     }
-  }
+  },
+  "defaultProject": "ui-common"
 }

@@ -7,5 +7,15 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "ui-common": {
+      "tags": ["type:ui"]
+    },
+    "ui-common-test-bed": {
+      "tags": ["type:test-app"]
+    },
+    "ui-common-test-bed-e2e": {
+      "tags": []
+    }
+  }
 }

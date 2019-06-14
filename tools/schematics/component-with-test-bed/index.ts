@@ -29,7 +29,7 @@ const addTestComponentToRouting = (options: any): Rule => (
 ) => {
   const routeToAdd = `{ path: '${dasherize(
     options.name
-  )}', component: ${classify(options.name)}TestComponent}`;
+  )}', component: ${classify(options.name)}TestComponent},`;
   const modulePath = `apps/ui-common-test-bed/src/app/app.module.ts`;
   const buffer = tree.read(modulePath);
   const text = buffer.toString();

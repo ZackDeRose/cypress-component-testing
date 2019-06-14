@@ -8,7 +8,7 @@ import {
 } from '@angular-devkit/schematics';
 
 const createComponent = (options: any) =>
-  externalSchematic('@angular/schematics', 'component', {
+  externalSchematic('@schematics/angular', 'component', {
     name: options.name,
     project: 'ui-common',
     module: 'ui-common.module.ts',
@@ -16,10 +16,10 @@ const createComponent = (options: any) =>
   });
 
 const addTestComponentToTestApp = (options: any) =>
-  externalSchematic('@angular/schematics', 'component', {
+  externalSchematic('@schematics/angular', 'component', {
     name: `${classify(options.name)}Test`,
     project: 'ui-common-test-bed',
-    module: 'ui-common-test-bed.module.ts'
+    module: 'app.module.ts'
   });
 
 const addTestComponentToRouting = (options: any): Rule => (
@@ -32,7 +32,7 @@ const addTestComponentToRouting = (options: any): Rule => (
   const modulePath = `apps/ui-common-test-bed/src/app/app.module.ts`;
   const buffer = tree.read(modulePath);
   const text = buffer.toString();
-  if (text) {
+  if (!text) {
     throw Error();
   }
   const token = `RouterModule.forRoot([`;

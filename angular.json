@@ -33,6 +33,9 @@
             "tsConfig": "libs/ui-common/tsconfig.spec.json",
             "setupFile": "libs/ui-common/src/test-setup.ts"
           }
+        },
+        "serve-test-bed": {
+          "builder": 
         }
       },
       "schematics": {

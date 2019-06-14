@@ -57,11 +57,28 @@ const mountComponentInTestBed = (options: any): Rule => (
   tree.overwrite(componentPath, tagToAdd);
 };
 
+const addCypressTest = (options: any): Rule => (
+  tree: Tree,
+  _context: SchematicContext
+) => {
+  const text = `describe('${classify(options.name)} Component', () => {
+    beforeEach(() => cy.visit('/${dasherize(options.name)}'));
+  
+    it('component should exist', () => {
+      cy.get('nrwl-${dasherize(options.name)}');
+    })
+  });
+};`;
+  const testPath = `app/ui-common-test-bed-e2e`;
+  tree.create(testPath, text);
+};
+
 export default function(schema: any): Rule {
   return chain([
     createComponent(schema),
     addTestComponentToTestApp(schema),
     addTestComponentToRouting(schema),
-    mountComponentInTestBed(schema)
+    mountComponentInTestBed(schema),
+    addCypressTest(schema)
   ]);
 }

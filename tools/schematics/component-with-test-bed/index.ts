@@ -69,7 +69,9 @@ const addCypressTest = (options: any): Rule => (
     })
   });
 };`;
-  const testPath = `app/ui-common-test-bed-e2e`;
+  const testPath = `apps/ui-common-test-bed-e2e/src/integration/${dasherize(
+    options.name
+  )}.component.spec.ts`;
   tree.create(testPath, text);
 };
 

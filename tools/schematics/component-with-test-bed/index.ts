@@ -51,7 +51,7 @@ const mountComponentInTestBed = (options: any): Rule => (
   const tagToAdd = `<nrwl-${dasherize(options.name)}></nrwl-${dasherize(
     options.name
   )}>`;
-  const componentPath = `libs/ui-common-test-bed/src/app/${dasherize(
+  const componentPath = `apps/ui-common-test-bed/src/app/${dasherize(
     options.name
   )}-test/${dasherize(options.name)}-test.component.html`;
   tree.overwrite(componentPath, tagToAdd);

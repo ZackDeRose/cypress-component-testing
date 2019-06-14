@@ -6,6 +6,7 @@ import {
   SchematicContext,
   Tree
 } from '@angular-devkit/schematics';
+import { path } from '@angular-devkit/core';
 
 const createComponent = (options: any) =>
   externalSchematic('@schematics/angular', 'component', {
@@ -41,6 +42,19 @@ const addTestComponentToRouting = (options: any): Rule => (
     indexToInsertAt
   )}`;
   tree.overwrite(modulePath, newText);
+};
+
+const mountComponentInTestBed = (options: any): Rule => (
+  tree: Tree,
+  _context: SchematicContext
+) => {
+  const tagToAdd = `<nrwl-${dasherize(options.name)}></nrwl-${dasherize(
+    options.name
+  )}>`;
+  const componentPath = `libs/ui-common-test-bed/src/app/${dasherize(
+    options.name
+  )}-test/${dasherize(options.name)}-test.component.html`;
+  tree.overwrite(componentPath, tagToAdd);
 };
 
 export default function(schema: any): Rule {

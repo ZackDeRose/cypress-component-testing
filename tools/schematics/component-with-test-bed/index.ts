@@ -62,13 +62,12 @@ const addCypressTest = (options: any): Rule => (
   _context: SchematicContext
 ) => {
   const text = `describe('${classify(options.name)} Component', () => {
-    beforeEach(() => cy.visit('/${dasherize(options.name)}'));
-  
-    it('component should exist', () => {
-      cy.get('nrwl-${dasherize(options.name)}');
-    })
-  });
-};`;
+  beforeEach(() => cy.visit('/${dasherize(options.name)}'));
+
+  it('component should exist', () => {
+    cy.get('nrwl-${dasherize(options.name)}');
+  })
+});`;
   const testPath = `apps/ui-common-test-bed-e2e/src/integration/${dasherize(
     options.name
   )}.component.spec.ts`;

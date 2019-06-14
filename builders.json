@@ -1,9 +1,0 @@
-{
-  "builders": {
-    "test-bed-serve": {
-      "implementation": "./test-bed-serve.builder",
-      "schema": "./test-bed-serve.builder.json",
-      "description": "Runs any command line in the operating system."
-    }
-  }
-}

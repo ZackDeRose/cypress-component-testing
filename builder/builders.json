@@ -1,0 +1,9 @@
+{
+  "builders": {
+    "lib-serve": {
+      "implementation": "./lib-serve",
+      "schema": "./lib-serve/schema",
+      "description": "Runs any command line in the operating system."
+    }
+  }
+}

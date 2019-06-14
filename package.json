@@ -29,7 +29,6 @@
   },
   "private": true,
   "dependencies": {
-    "@nrwl/angular": "8.0.0",
     "@angular/animations": "^8.0.1",
     "@angular/common": "^8.0.1",
     "@angular/compiler": "^8.0.1",
@@ -38,20 +37,22 @@
     "@angular/platform-browser": "^8.0.1",
     "@angular/platform-browser-dynamic": "^8.0.1",
     "@angular/router": "^8.0.1",
+    "@nrwl/angular": "8.0.0",
+    "@zack/zack": "file:builder",
     "core-js": "^2.5.4",
     "rxjs": "6.5.2",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@nrwl/workspace": "8.0.0",
-    "@nrwl/jest": "8.0.0",
-    "@nrwl/cypress": "8.0.0",
-    "prettier": "1.15.2",
+    "@angular-devkit/architect": "^0.800.3",
     "@angular-devkit/build-angular": "~0.800.0",
     "@angular-devkit/build-ng-packagr": "~0.800.0",
     "@angular/cli": "8.0.3",
     "@angular/compiler-cli": "~8.0.1",
     "@angular/language-service": "^8.0.1",
+    "@nrwl/cypress": "8.0.0",
+    "@nrwl/jest": "8.0.0",
+    "@nrwl/workspace": "8.0.0",
     "@types/jest": "24.0.9",
     "@types/jquery": "3.3.6",
     "@types/node": "~8.9.4",
@@ -61,10 +62,12 @@
     "jest": "24.1.0",
     "jest-preset-angular": "7.0.0",
     "ng-packagr": "^5.1.0",
+    "prettier": "1.15.2",
     "ts-node": "~7.0.0",
     "tsickle": "^0.35.0",
     "tslib": "^1.9.0",
     "tslint": "~5.11.0",
-    "typescript": "3.4.5"
+    "typescript": "3.4.5",
+    "webpack": "^4.34.0"
   }
 }
